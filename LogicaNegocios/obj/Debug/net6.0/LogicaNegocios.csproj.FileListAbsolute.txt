@@ -1,0 +1,15 @@
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\bin\Debug\net6.0\LogicaNegocios.deps.json
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\bin\Debug\net6.0\LogicaNegocios.dll
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\bin\Debug\net6.0\LogicaNegocios.pdb
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\bin\Debug\net6.0\Entidades.dll
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\bin\Debug\net6.0\Entidades.pdb
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\LogicaNegocios.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\LogicaNegocios.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\LogicaNegocios.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\LogicaNegocios.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\LogicaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\LogicaNegocios.csproj.CopyComplete
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\LogicaNegocios.dll
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\refint\LogicaNegocios.dll
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\LogicaNegocios.pdb
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\LogicaNegocios\obj\Debug\net6.0\ref\LogicaNegocios.dll
