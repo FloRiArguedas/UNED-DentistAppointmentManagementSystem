@@ -21,17 +21,28 @@ namespace LogicaNegocios
         }
         #endregion
 
-        #region Metodos
+        #region METODOS
         //En esta región estarán todos los métodos para el funcionamiento del sistema.
         #region Métodos para TIPO CONSULTA
+
+        #region Métodos para crear y añadir un Tipo Consulta.
         //Métodos necesarios para llenar el arreglo de tipo consulta, después de capturar los datos en la interfaz.
 
-        //Creación de un ID único.
-
-        private int idtc = 0;
-        public int crear_id()
+        //Verificar si es un ID único.
+        public bool IDunico(int IDTiCo)
         {
-            return idtc++;
+
+            for (int i = 0; i < TiposdeConsultas.Length; i++)
+            {
+                if (TiposdeConsultas != null) //Verifico que el array no este nulo.
+                {
+                    if (TiposdeConsultas[i] != null && IDTiCo == TiposdeConsultas[i].ID) //Verifico que no este nulo el índice
+                    {
+                        return false; // ID no es unico
+                    }
+                }
+            }
+            return true; //ID es único
         }
 
         //Retornar caracter con tipo status
@@ -54,42 +65,46 @@ namespace LogicaNegocios
         }
 
         //Método para crear un nuevo Tipo de Consulta
-        public TipoConsulta CrearNuevoTipoConsulta(int idtc, string descriptiontc, char status)
+        public TipoConsulta CrearNuevoTipoConsulta(int IDTiCo, string descriptiontc, char status)
         {
             //Creación del objetoTipoConsulta
-            TipoConsulta NuevoTipodeConsulta = new TipoConsulta(idtc, descriptiontc, status);
+            TipoConsulta NuevoTipodeConsulta = null;
+            if (IDunico(IDTiCo)) //Creo el objeto solo si el ID es único.
+            {
+                NuevoTipodeConsulta = new TipoConsulta(IDTiCo, descriptiontc, status);
+            }
             return NuevoTipodeConsulta;
         }
 
         //Método para ingresar el nuevo Tipo de Consulta al arreglo.
-        public void AddTipoConsulta(TipoConsulta NuevoTipodeConsulta)
+        public bool AddArrayTipoConsulta(TipoConsulta NuevoTipodeConsulta)
         {
-            for (int i = 0; i < TiposdeConsultas.Length; i++)
+            if (NuevoTipodeConsulta != null)
             {
-                if (TiposdeConsultas[i] == null)
+                for (int i = 0; i < TiposdeConsultas.Length; i++)
                 {
-                    TiposdeConsultas[i] = NuevoTipodeConsulta;
-                    break;
-                }
-                else
-                {
-                    //Show Message "Ya no puede añadir más tipos de consultas.
+                    if (TiposdeConsultas[i] == null)
+                    {
+                        TiposdeConsultas[i] = NuevoTipodeConsulta;
+                        return true;
+                    }
                 }
             }
-
+            return false;
         }
 
-        //Método para procesar todo lo necesario para evento añadir
-        public void AñadirTipoConsulta(string description, string selectedValue)
+        //Método para procesar todo lo necesario para el evento añadir
+        public bool AñadirTipoConsulta(int id_tc, string description, string selectedValue)
         {
-            int id_tc = crear_id(); //Llamo a la función y guardo el ID generado.
             char status = Status_Send(selectedValue); //Llamo a la función y devuelvo el char con el valor seleccionado.
             TipoConsulta nuevo_tc = CrearNuevoTipoConsulta(id_tc, description, status); //creo el nuevo objeto Tipo Consulta.
-            AddTipoConsulta(nuevo_tc);//Añado el nuevo objeto al array.
+            return AddArrayTipoConsulta(nuevo_tc);//Añado el nuevo objeto al array. Retorno si es true/salse.
 
         }
+        #endregion
 
-        //Métodos para la modificación de Tipos de Consulta.
+        #region Métodos para la modificación de Tipos de Consulta.
+
 
         //Método para buscar el ID del objeto Tipo Consulta
         public TipoConsulta VerificarID(int ID)
@@ -115,9 +130,6 @@ namespace LogicaNegocios
         }
 
 
-
-
-
         //Método para cambiar el estado del Tipo Consulta
 
         public void ModificarEstado(string selectedValue, TipoConsulta TC_Encontrada)
@@ -140,6 +152,8 @@ namespace LogicaNegocios
             return false;
         }
     }
+    #endregion
+
     #endregion
 
     #endregion

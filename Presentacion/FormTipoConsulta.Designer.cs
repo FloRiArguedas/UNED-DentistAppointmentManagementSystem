@@ -154,6 +154,7 @@
             txtbx_IDTC.Name = "txtbx_IDTC";
             txtbx_IDTC.Size = new Size(100, 25);
             txtbx_IDTC.TabIndex = 10;
+            txtbx_IDTC.TextChanged += txtbx_IDTC_TextChanged;
             // 
             // lbl_ChangeStatus
             // 

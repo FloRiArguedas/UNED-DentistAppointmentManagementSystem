@@ -19,6 +19,7 @@ namespace Presentacion
         string selectedValue;
         private DataBase database;
         int IDVerify;
+        int IDTiCon;
         #endregion
 
         #region Constructor
@@ -30,6 +31,11 @@ namespace Presentacion
         #endregion
 
         #region Captura de datos para el objeto.
+
+        private void txtbx_IDTC_TextChanged(object sender, EventArgs e)
+        {
+            IDTiCon = int.Parse(txtbx_IDTC.Text);
+        }
         private void txtb_description_TextChanged(object sender, EventArgs e)
         {
             description = txtb_description.Text;
@@ -50,10 +56,17 @@ namespace Presentacion
             if (cmbbx_status.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(txtb_description.Text))
             {
                 //Llamo a la función de la clase DataBase para que haga toda la lógica.
-                this.database.AñadirTipoConsulta(description, selectedValue);
-                //Muestro la información en DataGridView
-                DGV_TC.DataSource = this.database.TiposdeConsultas;
-                DGV_TC.Refresh();
+                if (this.database.AñadirTipoConsulta(IDTiCon, description, selectedValue)) //Valido que venga en true.
+                {
+                    //Muestro la información en DataGridView
+                    DGV_TC.DataSource = this.database.TiposdeConsultas;
+                    DGV_TC.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("El ID debe ser único", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
             }
             else
             {
