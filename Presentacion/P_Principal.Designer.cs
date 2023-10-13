@@ -31,9 +31,9 @@
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
             registroClienteToolStripMenuItem = new ToolStripMenuItem();
-            registrarCitasToolStripMenuItem = new ToolStripMenuItem();
             administrarClientesToolStripMenuItem = new ToolStripMenuItem();
             administrarDoctoresToolStripMenuItem = new ToolStripMenuItem();
+            registrarCitasToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
             reportesPorFechaToolStripMenuItem = new ToolStripMenuItem();
@@ -65,12 +65,6 @@
             registroClienteToolStripMenuItem.Text = "Registrar Tipos Consulta";
             registroClienteToolStripMenuItem.Click += registroClienteToolStripMenuItem_Click;
             // 
-            // registrarCitasToolStripMenuItem
-            // 
-            registrarCitasToolStripMenuItem.Name = "registrarCitasToolStripMenuItem";
-            registrarCitasToolStripMenuItem.Size = new Size(201, 22);
-            registrarCitasToolStripMenuItem.Text = "Registrar Citas";
-            // 
             // administrarClientesToolStripMenuItem
             // 
             administrarClientesToolStripMenuItem.Name = "administrarClientesToolStripMenuItem";
@@ -83,6 +77,13 @@
             administrarDoctoresToolStripMenuItem.Name = "administrarDoctoresToolStripMenuItem";
             administrarDoctoresToolStripMenuItem.Size = new Size(201, 22);
             administrarDoctoresToolStripMenuItem.Text = "Administrar Doctores";
+            administrarDoctoresToolStripMenuItem.Click += administrarDoctoresToolStripMenuItem_Click;
+            // 
+            // registrarCitasToolStripMenuItem
+            // 
+            registrarCitasToolStripMenuItem.Name = "registrarCitasToolStripMenuItem";
+            registrarCitasToolStripMenuItem.Size = new Size(201, 22);
+            registrarCitasToolStripMenuItem.Text = "Registrar Citas";
             // 
             // salirToolStripMenuItem
             // 

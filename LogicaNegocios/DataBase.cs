@@ -16,12 +16,14 @@ namespace LogicaNegocios
         #region Declaraciones/Instancias
         public TipoConsulta[] TiposdeConsultas;
         public Cliente[] ArrayClientes;
+        public Doctor[] ArrayDoctors;
 
 
         public DataBase()
         {
             TiposdeConsultas = new TipoConsulta[10];
             ArrayClientes = new Cliente[20];
+            ArrayDoctors = new Doctor[20];
         }
         #endregion
 
@@ -289,8 +291,7 @@ namespace LogicaNegocios
             return false; //El usuario no seleccionó fecha.
         }
 
-        //Método para realizar/mostrar  la modificación del cliente.
-
+        //Método para realizar/mostrar la modificación del cliente.
         public bool MostrarClienteActualizado(int ID, string SelectedValue, DateTime FechaActualizada)
         {
             Cliente ClienteEncontrado;
@@ -303,6 +304,143 @@ namespace LogicaNegocios
         }
         #endregion
         #endregion
+
+
+        #region Métodos para ADMINISTRAR DOCTORES
+
+        #region Métodos para crear y añadir Doctores
+
+        //Verificar si la identificación del doctor es única.
+        public bool VerificarIdentificacionDoctor(int IDDoctor)
+        {
+            for (int i = 0; i < this.ArrayDoctors.Length; i++)
+            {
+                if (ArrayDoctors != null) //Verifico que el array no este nulo.
+                {
+                    if (ArrayDoctors[i] != null && IDDoctor == ArrayDoctors[i].ID_Doctor) //Verifico que no este nulo el índice
+                    {
+                        return false; // ID no es unico
+                    }
+                }
+            }
+            return true; //ID es único
+        }
+
+        //Método para convertir a char el estado del doctor.
+        public char ConvertirEstadoDoctor(string obtained_status)
+        {
+            char statusD = ' ';
+            if (obtained_status != null)
+            {
+                if (obtained_status == "0")
+                {
+                    statusD = 'A';
+                }
+                else
+                {
+                    statusD = 'I';
+                }
+            }
+            return statusD;
+        }
+
+        //Método para crear un nuevo Doctor.
+        public Doctor CrearDoctor(int IDDoctor, string name, string apellido1, string apellido2, char status)
+        {
+            Doctor DoctorNuevo = null;
+
+            if (VerificarIdentificacionDoctor(IDDoctor))
+            {
+                DoctorNuevo = new Doctor(IDDoctor, name, apellido1, apellido2, status);
+            }
+
+            return DoctorNuevo;
+        }
+
+        //Método para enviar el nuevo doctor al arreglo.
+        public bool AddDoctortoArray(Doctor DoctorNuevo)
+        {
+            if (DoctorNuevo != null) //Verifico que el cliente haya sido creado.
+            {
+                for (int i = 0; i < ArrayDoctors.Length; i++)
+                {
+                    if (ArrayDoctors[i] == null)
+                    {
+                        ArrayDoctors[i] = DoctorNuevo;
+                        return true; //Se añadió cliente.
+                    }
+                }
+            }
+            return false; //No se añadió cliente.
+        }
+
+        //Método que procesa todo lo necesario para crear nuevo doctor.
+        public bool ProcesarDoctorNuevo(int IDDoctor, string name, string apellido1, string apellido2, string obtained_status)
+        {
+            VerificarIdentificacionDoctor(IDDoctor); //Llamo a la funcion que revisa si el ID no existe.
+            char status = ConvertirEstadoDoctor(obtained_status);//Llamo a la función que recibe el estado lo convierte a char.
+            //Llamo a la función que crea el doctor.
+            Doctor DoctorNuevo = CrearDoctor(IDDoctor, name, apellido1, apellido2, status);
+            //Llamo a la función que llena el array.
+            return AddDoctortoArray(DoctorNuevo); //Retorno si se añadió o no el cliente para enviar msj a interfaz.
+        }
+
+        #endregion
+
+        #region Métodos para buscar y modificar Doctores.
+
+        //Método para buscar que la identificación del doctor exista.
+        public Doctor RevisarIDDocExiste(int ID)
+        {
+            Doctor DoctorEncontrado = null;
+
+            for (int i = 0; i < ArrayDoctors.Length; i++)
+            {
+                if (this.ArrayDoctors[i] != null) //Verifico que este indice no este null.
+                {
+                    if (ID == this.ArrayDoctors[i].ID_Doctor)
+                    {
+                        DoctorEncontrado = ArrayDoctors[i];
+                        return DoctorEncontrado;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return DoctorEncontrado;
+        }
+
+        //Método para cambiar el estado del doctor.
+        public bool ModificarDoctor(string selectedValue, Doctor DoctorEncontrado)
+        {
+            char newstatus;
+            if (DoctorEncontrado != null)
+            { //Valido que el ID del doctor exista con la función bool.
+                newstatus = ConvertirEstadoDoctor(selectedValue); //Llamo a la función y devuelvo el char con el valor seleccionado.
+                DoctorEncontrado.Status_Doctor = newstatus; //Ingreso al objeto el nuevo género.
+                return true;
+            }
+            return false; //El usuario ingresó un ID que no existe.
+        }
+
+        //Método para realizar/mostrar la modificación del doctor.
+        public bool MostrarDoctorActualizado(int ID, string SelectedValue)
+        {
+            Doctor DoctorEncontrado;
+            DoctorEncontrado = RevisarIDDocExiste(ID);
+            if (DoctorEncontrado != null) //Entra si encontró al doctor.
+            {
+                ModificarDoctor(SelectedValue, DoctorEncontrado); return true;
+            }
+            return false; //El doctor no fue encontrado.
+        }
+
+        #endregion
+
+        #endregion
+
         #endregion
 
     }

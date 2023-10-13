@@ -36,12 +36,6 @@ namespace Presentacion
             formulario_TC.Show();
         }
 
-
-
-
-
-        #endregion
-
         private void administrarClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormAdministracionClientes formulario_AC = new FormAdministracionClientes(this.DB);
@@ -49,5 +43,17 @@ namespace Presentacion
             formulario_AC.Show();
 
         }
+
+        private void administrarDoctoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAdministrarDoctores formulario_AD = new FormAdministrarDoctores(this.DB);
+            formulario_AD.MdiParent = this;
+            formulario_AD.Show();
+        }
+
+
+        #endregion
+
+
     }
 }
