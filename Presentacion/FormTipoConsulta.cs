@@ -30,7 +30,7 @@ namespace Presentacion
         }
         #endregion
 
-        #region Captura de datos para el objeto.
+        #region Captura de datos para el objeto TC.
 
         private void txtbx_IDTC_TextChanged(object sender, EventArgs e)
         {
@@ -121,6 +121,8 @@ namespace Presentacion
         }
         #endregion
 
+        #endregion
+
     }
-    #endregion
+
 }

@@ -19,13 +19,13 @@ using System.Windows.Forms;
 namespace Presentacion
 {
     public partial class P_Principal : Form
-        
+
     {
         private DataBase DB;
         public P_Principal(DataBase database)
         {
             InitializeComponent();
-            this.DB= database;   //Guardo la referencia de la DB para pasarla a los distintos forms.
+            this.DB = database;   //Guardo la referencia de la DB para pasarla a los distintos forms.
         }
         #region Formularios
         //Muestro la pantalla de Registro de tipos de consulta, en la primer opción del menú.
@@ -41,5 +41,13 @@ namespace Presentacion
 
 
         #endregion
+
+        private void administrarClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAdministracionClientes formulario_AC = new FormAdministracionClientes(this.DB);
+            formulario_AC.MdiParent = this;
+            formulario_AC.Show();
+
+        }
     }
 }

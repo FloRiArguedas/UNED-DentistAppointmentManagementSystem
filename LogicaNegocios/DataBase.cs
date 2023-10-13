@@ -15,9 +15,13 @@ namespace LogicaNegocios
     {
         #region Declaraciones/Instancias
         public TipoConsulta[] TiposdeConsultas;
+        public AdministracionClientes[] ArrayClientes;
+
+
         public DataBase()
         {
             TiposdeConsultas = new TipoConsulta[10];
+            ArrayClientes = new AdministracionClientes[20];
         }
         #endregion
 
@@ -98,7 +102,7 @@ namespace LogicaNegocios
         {
             char status = Status_Send(selectedValue); //Llamo a la función y devuelvo el char con el valor seleccionado.
             TipoConsulta nuevo_tc = CrearNuevoTipoConsulta(id_tc, description, status); //creo el nuevo objeto Tipo Consulta.
-            return AddArrayTipoConsulta(nuevo_tc);//Añado el nuevo objeto al array. Retorno si es true/salse.
+            return AddArrayTipoConsulta(nuevo_tc);//Añado el nuevo objeto al array. Retorno si es true/false.
 
         }
         #endregion
@@ -151,13 +155,105 @@ namespace LogicaNegocios
             }
             return false;
         }
+
+
+
+        #endregion
+
+        #endregion
+
+
+        #region Métodos para ADMINISTRAR CLIENTES
+
+        #region Métodos para crear y añadir Clientes
+
+        //Verificar si la identificación del cliente es única.
+        public bool VerificarIdentificacionCliente(int IDCliente)
+        {
+            for (int i = 0; i < this.ArrayClientes.Length; i++)
+            {
+                if (ArrayClientes != null) //Verifico que el array no este nulo.
+                {
+                    if (ArrayClientes[i] != null && IDCliente == ArrayClientes[i].Id_Cliente) //Verifico que no este nulo el índice
+                    {
+                        return false; // ID no es unico
+                    }
+                }
+            }
+            return true; //ID es único
+        }
+
+        //Método para convertir a char el género del cliente.
+        public char ConvertirGenero(string obtained_gender)
+        {
+
+            char gender =' ';
+            if (obtained_gender != null)
+            {
+                if (obtained_gender == "0")
+                {
+                    gender = 'F';
+                }
+                else if (obtained_gender == "1")
+                {
+                    gender = 'M';
+                }
+                else
+                {
+                    gender = 'N';
+                }
+            }
+            return gender;
+        }
+
+        //Método para crear un nuevo cliente.
+        public AdministracionClientes CrearCliente(int ID, string name, string apellido1, string apellido2, DateTime fechaNac, char gender)
+        {
+            AdministracionClientes ClienteNuevo= null;
+
+            if (VerificarIdentificacionCliente(ID))
+            {
+                ClienteNuevo = new AdministracionClientes(ID, name, apellido1, apellido2, fechaNac, gender);
+            }
+
+            return ClienteNuevo;
+        }
+
+        //Método para enviar el nuevo cliente al arreglo.
+        public bool AddClienttoArray (AdministracionClientes ClienteNuevo)
+        {
+            if (ClienteNuevo != null) //Verifico que el cliente haya sido creado.
+            {
+                for (int i = 0; i < ArrayClientes.Length; i++)
+                {
+                    if (ArrayClientes[i] == null)
+                    {
+                        ArrayClientes[i] = ClienteNuevo;
+                        return true; //Se añadió cliente.
+                    }
+                }
+            }
+            return false; //No se añadió cliente.
+        }
+
+        //Método que procesa todo lo necesario para crear un cliente nuevo.
+
+        public bool ProcesarClienteNuevo(int IDCliente, string obtained_gender,string name, string apellido1, string apellido2, DateTime fechaNac) {
+
+            VerificarIdentificacionCliente(IDCliente); //Llamo a la funcion que revisa si el ID no existe.
+            char gender = ConvertirGenero(obtained_gender);//Llamo a la función que recibe el género lo convierte a char.
+            //Llamo a la función que crea el cliente.
+            AdministracionClientes ClienteNuevo= CrearCliente(IDCliente, name, apellido1, apellido2, fechaNac, gender);
+            //Llamo a la función que llena el array.
+            return AddClienttoArray(ClienteNuevo); //Retorno si se añadió o no el cliente para enviar msj a interfaz.
+        }
+
+
+        #endregion
+        #endregion
+        #endregion
+
     }
-    #endregion
-
-    #endregion
-
-    #endregion
-
 }
 
 

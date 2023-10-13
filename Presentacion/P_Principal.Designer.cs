@@ -53,7 +53,7 @@
             // 
             // archivoToolStripMenuItem
             // 
-            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registroClienteToolStripMenuItem, registrarCitasToolStripMenuItem, administrarClientesToolStripMenuItem, administrarDoctoresToolStripMenuItem, salirToolStripMenuItem });
+            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registroClienteToolStripMenuItem, administrarClientesToolStripMenuItem, administrarDoctoresToolStripMenuItem, registrarCitasToolStripMenuItem, salirToolStripMenuItem });
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             archivoToolStripMenuItem.Size = new Size(60, 20);
             archivoToolStripMenuItem.Text = "Archivo";
@@ -70,13 +70,13 @@
             registrarCitasToolStripMenuItem.Name = "registrarCitasToolStripMenuItem";
             registrarCitasToolStripMenuItem.Size = new Size(201, 22);
             registrarCitasToolStripMenuItem.Text = "Registrar Citas";
-            
             // 
             // administrarClientesToolStripMenuItem
             // 
             administrarClientesToolStripMenuItem.Name = "administrarClientesToolStripMenuItem";
             administrarClientesToolStripMenuItem.Size = new Size(201, 22);
             administrarClientesToolStripMenuItem.Text = "Administrar Clientes";
+            administrarClientesToolStripMenuItem.Click += administrarClientesToolStripMenuItem_Click;
             // 
             // administrarDoctoresToolStripMenuItem
             // 

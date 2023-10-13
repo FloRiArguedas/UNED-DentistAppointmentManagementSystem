@@ -22,3 +22,4 @@ C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_
 C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\Presentacion\obj\Debug\net6.0-windows\ref\Presentacion.dll
 C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\Presentacion\obj\Debug\net6.0-windows\Presentacion.FormTipoConsulta.resources
 C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\Presentacion\obj\Debug\net6.0-windows\Presentacion.Properties.Resources.resources
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\Presentacion\obj\Debug\net6.0-windows\Presentacion.FormAdministracionClientes.resources
