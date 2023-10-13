@@ -149,6 +149,7 @@
             bttnModify.TabIndex = 8;
             bttnModify.Text = "MODIFICAR";
             bttnModify.UseVisualStyleBackColor = false;
+            bttnModify.Click += bttnModify_Click;
             // 
             // bttnCharge
             // 
@@ -159,6 +160,7 @@
             bttnCharge.TabIndex = 9;
             bttnCharge.Text = "CONSULTAR";
             bttnCharge.UseVisualStyleBackColor = true;
+            bttnCharge.Click += bttnCharge_Click;
             // 
             // lblBDModify
             // 

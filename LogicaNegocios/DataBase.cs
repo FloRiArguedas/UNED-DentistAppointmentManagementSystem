@@ -15,13 +15,13 @@ namespace LogicaNegocios
     {
         #region Declaraciones/Instancias
         public TipoConsulta[] TiposdeConsultas;
-        public AdministracionClientes[] ArrayClientes;
+        public Cliente[] ArrayClientes;
 
 
         public DataBase()
         {
             TiposdeConsultas = new TipoConsulta[10];
-            ArrayClientes = new AdministracionClientes[20];
+            ArrayClientes = new Cliente[20];
         }
         #endregion
 
@@ -207,20 +207,20 @@ namespace LogicaNegocios
         }
 
         //Método para crear un nuevo cliente.
-        public AdministracionClientes CrearCliente(int ID, string name, string apellido1, string apellido2, DateTime fechaNac, char gender)
+        public Cliente CrearCliente(int ID, string name, string apellido1, string apellido2, DateTime fechaNac, char gender)
         {
-            AdministracionClientes ClienteNuevo= null;
+            Cliente ClienteNuevo= null;
 
             if (VerificarIdentificacionCliente(ID))
             {
-                ClienteNuevo = new AdministracionClientes(ID, name, apellido1, apellido2, fechaNac, gender);
+                ClienteNuevo = new Cliente(ID, name, apellido1, apellido2, fechaNac, gender);
             }
 
             return ClienteNuevo;
         }
 
         //Método para enviar el nuevo cliente al arreglo.
-        public bool AddClienttoArray (AdministracionClientes ClienteNuevo)
+        public bool AddClienttoArray (Cliente ClienteNuevo)
         {
             if (ClienteNuevo != null) //Verifico que el cliente haya sido creado.
             {
@@ -243,12 +243,64 @@ namespace LogicaNegocios
             VerificarIdentificacionCliente(IDCliente); //Llamo a la funcion que revisa si el ID no existe.
             char gender = ConvertirGenero(obtained_gender);//Llamo a la función que recibe el género lo convierte a char.
             //Llamo a la función que crea el cliente.
-            AdministracionClientes ClienteNuevo= CrearCliente(IDCliente, name, apellido1, apellido2, fechaNac, gender);
+            Cliente ClienteNuevo= CrearCliente(IDCliente, name, apellido1, apellido2, fechaNac, gender);
             //Llamo a la función que llena el array.
             return AddClienttoArray(ClienteNuevo); //Retorno si se añadió o no el cliente para enviar msj a interfaz.
         }
 
 
+        #endregion
+
+        #region Métodos para buscar y modificar Clientes
+
+        //Método para buscar que la identificación del cliente ya exista.
+        public Cliente RevisarIDexiste(int ID)
+        {
+            Cliente ClienteEncontrado = null;
+
+            for (int i = 0; i < ArrayClientes.Length; i++)
+            {
+                if (this.ArrayClientes[i] != null) //Verifico que este indice no este null.
+                {
+                    if (ID == this.ArrayClientes[i].Id_Cliente)
+                    {
+                        ClienteEncontrado = ArrayClientes[i];
+                        return ClienteEncontrado;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return ClienteEncontrado;
+        }
+
+        //Método para cambiar el género y fecha de nacimiento del cliente.
+        public bool ModificarCliente(string selectedValue, Cliente ClienteEncontrado, DateTime FechaActualizada)
+        {
+            char newgenre;
+            if (FechaActualizada != DateTime.MinValue) { //Valido que el usuario haya cambiado la fecha de nacimiento.
+                newgenre = ConvertirGenero(selectedValue); //Llamo a la función y devuelvo el char con el valor seleccionado.
+                ClienteEncontrado.Gen_Cliente = newgenre; //Ingreso al objeto el nuevo género.
+                ClienteEncontrado.BiDate_Cliente = FechaActualizada; //Ingreso al objeto la nueva fecha.
+                return true;
+            }
+            return false; //El usuario no seleccionó fecha.
+        }
+
+        //Método para realizar/mostrar  la modificación del cliente.
+
+        public bool MostrarClienteActualizado(int ID, string SelectedValue, DateTime FechaActualizada)
+        {
+            Cliente ClienteEncontrado;
+            ClienteEncontrado = RevisarIDexiste(ID);
+            if (ClienteEncontrado != null)
+            {
+                ModificarCliente(SelectedValue, ClienteEncontrado, FechaActualizada); return true;
+            }
+            return false;
+        }
         #endregion
         #endregion
         #endregion

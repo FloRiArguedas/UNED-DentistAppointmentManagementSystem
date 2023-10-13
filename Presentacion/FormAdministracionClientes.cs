@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -107,6 +108,7 @@ namespace Presentacion
         #endregion
 
         #region Llamada a métodos y muestra de datos.
+
         #region Añadir
         private void bttnAdd_Click(object sender, EventArgs e)
         {
@@ -133,19 +135,49 @@ namespace Presentacion
             {
                 MessageBox.Show("Debe llenar todas las casillas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
 
+
+        #endregion
+
+
+        #region Modificar
+
+        //Llamar a la función para modificar
+
+        private void bttnModify_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtBox_IDtoModify.Text) &&
+                BirthDate != DateTime.MinValue && cmbbxGenAdd.SelectedIndex != -1)
+            {
+                if (database.MostrarClienteActualizado(IDCliente, Gender, BirthDate))
+                {
+                    //Muestro la información en DataGridView
+                    dgv_AC.DataSource = this.database.ArrayClientes;
+                    dgv_AC.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el cliente con el ID proporcionado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Es necesario seleccionar las casillas de modificación ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
         #endregion
 
 
+        //Evento del botón consultar para que recargue la tabla.
+        private void bttnCharge_Click(object sender, EventArgs e)
+        {
+            //Muestro la información en DataGridView
+            dgv_AC.DataSource = this.database.ArrayClientes;
+            dgv_AC.Refresh();
+        }
 
         #endregion
-
-
-
-
-
-
     }
 }
