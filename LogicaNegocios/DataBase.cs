@@ -17,6 +17,8 @@ namespace LogicaNegocios
         public TipoConsulta[] TiposdeConsultas;
         public Cliente[] ArrayClientes;
         public Doctor[] ArrayDoctors;
+        public Doctor[] ArrayDoctoresActivos;
+        public TipoConsulta[] ArrayConsultasActivas;
 
 
         public DataBase()
@@ -24,6 +26,8 @@ namespace LogicaNegocios
             TiposdeConsultas = new TipoConsulta[10];
             ArrayClientes = new Cliente[20];
             ArrayDoctors = new Doctor[20];
+            ArrayDoctoresActivos = new Doctor[20];
+            ArrayConsultasActivas = new TipoConsulta[10];
         }
         #endregion
 
@@ -189,7 +193,7 @@ namespace LogicaNegocios
         public char ConvertirGenero(string obtained_gender)
         {
 
-            char gender =' ';
+            char gender = ' ';
             if (obtained_gender != null)
             {
                 if (obtained_gender == "0")
@@ -211,7 +215,7 @@ namespace LogicaNegocios
         //Método para crear un nuevo cliente.
         public Cliente CrearCliente(int ID, string name, string apellido1, string apellido2, DateTime fechaNac, char gender)
         {
-            Cliente ClienteNuevo= null;
+            Cliente ClienteNuevo = null;
 
             if (VerificarIdentificacionCliente(ID))
             {
@@ -222,7 +226,7 @@ namespace LogicaNegocios
         }
 
         //Método para enviar el nuevo cliente al arreglo.
-        public bool AddClienttoArray (Cliente ClienteNuevo)
+        public bool AddClienttoArray(Cliente ClienteNuevo)
         {
             if (ClienteNuevo != null) //Verifico que el cliente haya sido creado.
             {
@@ -240,12 +244,13 @@ namespace LogicaNegocios
 
         //Método que procesa todo lo necesario para crear un cliente nuevo.
 
-        public bool ProcesarClienteNuevo(int IDCliente, string obtained_gender,string name, string apellido1, string apellido2, DateTime fechaNac) {
+        public bool ProcesarClienteNuevo(int IDCliente, string obtained_gender, string name, string apellido1, string apellido2, DateTime fechaNac)
+        {
 
             VerificarIdentificacionCliente(IDCliente); //Llamo a la funcion que revisa si el ID no existe.
             char gender = ConvertirGenero(obtained_gender);//Llamo a la función que recibe el género lo convierte a char.
             //Llamo a la función que crea el cliente.
-            Cliente ClienteNuevo= CrearCliente(IDCliente, name, apellido1, apellido2, fechaNac, gender);
+            Cliente ClienteNuevo = CrearCliente(IDCliente, name, apellido1, apellido2, fechaNac, gender);
             //Llamo a la función que llena el array.
             return AddClienttoArray(ClienteNuevo); //Retorno si se añadió o no el cliente para enviar msj a interfaz.
         }
@@ -282,7 +287,8 @@ namespace LogicaNegocios
         public bool ModificarCliente(string selectedValue, Cliente ClienteEncontrado, DateTime FechaActualizada)
         {
             char newgenre;
-            if (FechaActualizada != DateTime.MinValue) { //Valido que el usuario haya cambiado la fecha de nacimiento.
+            if (FechaActualizada != DateTime.MinValue)
+            { //Valido que el usuario haya cambiado la fecha de nacimiento.
                 newgenre = ConvertirGenero(selectedValue); //Llamo a la función y devuelvo el char con el valor seleccionado.
                 ClienteEncontrado.Gen_Cliente = newgenre; //Ingreso al objeto el nuevo género.
                 ClienteEncontrado.BiDate_Cliente = FechaActualizada; //Ingreso al objeto la nueva fecha.
@@ -436,6 +442,74 @@ namespace LogicaNegocios
             }
             return false; //El doctor no fue encontrado.
         }
+
+        #endregion
+
+        #endregion
+
+
+        #region Métodos para REGISTRO DE CITAS
+
+        #region Métodos para obtener Doctores y consultas activas y verficar clientes.
+
+        public bool CargarDoctoresActivos()
+        {
+            int j = 0;
+            bool bandera = false;
+            if (ArrayDoctors != null)
+            {
+                for (int i = 0; i < ArrayDoctors.Length; i++)
+                {
+                    if (ArrayDoctors[i] != null)
+                    {
+                        if ('A' == ArrayDoctors[i].Status_Doctor)
+                        {
+                            ArrayDoctoresActivos[j] = ArrayDoctors[i];
+                            j++;
+                            bandera = true;
+                        }
+                    }
+                    else break;
+                }
+
+            }
+            return bandera;
+        }
+
+        public bool CargarconsultasActivas()
+        {
+            int j = 0;
+            bool bandera = false;
+            if (TiposdeConsultas != null)
+            {
+                for (int i = 0; i < TiposdeConsultas.Length; i++)
+                {
+                    if (TiposdeConsultas[i] != null)
+                    {
+                        if ('A' == TiposdeConsultas[i].Estado)
+                        {
+                            ArrayConsultasActivas[j] = TiposdeConsultas[i];
+                            j++;
+                            bandera = true;
+                        }
+                    }
+                    else break;
+                }
+
+            }
+            return bandera;
+        }
+
+        public bool ExistenClientesRegistrados()
+        {
+            for (int i = 0; i < ArrayClientes.Length; i++)
+            {
+                if (ArrayClientes[i] != null) { return true; }
+            }
+            return false;
+        }
+
+
 
         #endregion
 

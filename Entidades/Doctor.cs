@@ -34,5 +34,11 @@ namespace Entidades
         }
         #endregion
 
+        //Utilizo el método ToString de la clase para enviar los datos al combobox.
+        public override string ToString()
+        {
+            return ID_Doctor.ToString() + " " + Name_Doctor + " " + PA_Doctor + " " + SA_Doctor;
+        }
+
     }
 }

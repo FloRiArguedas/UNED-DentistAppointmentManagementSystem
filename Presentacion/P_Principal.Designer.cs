@@ -84,6 +84,7 @@
             registrarCitasToolStripMenuItem.Name = "registrarCitasToolStripMenuItem";
             registrarCitasToolStripMenuItem.Size = new Size(201, 22);
             registrarCitasToolStripMenuItem.Text = "Registrar Citas";
+            registrarCitasToolStripMenuItem.Click += registrarCitasToolStripMenuItem_Click;
             // 
             // salirToolStripMenuItem
             // 

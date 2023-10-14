@@ -35,5 +35,10 @@ namespace Entidades
             Gen_Cliente = gen_Cliente;
         }
         #endregion
+        //Utilizo el método ToString de la clase para enviar los datos al combobox.
+        public override string ToString()
+        {
+            return Id_Cliente.ToString() + " " + Name_Cliente + " " + PA_Cliente + " " + SA_Cliente;
+        }
     }
 }

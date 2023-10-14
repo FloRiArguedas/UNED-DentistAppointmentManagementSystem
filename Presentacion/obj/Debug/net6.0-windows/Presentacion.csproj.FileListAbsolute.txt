@@ -24,3 +24,4 @@ C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_
 C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\Presentacion\obj\Debug\net6.0-windows\Presentacion.Properties.Resources.resources
 C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\Presentacion\obj\Debug\net6.0-windows\Presentacion.FormAdministracionClientes.resources
 C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\Presentacion\obj\Debug\net6.0-windows\Presentacion.FormAdministrarDoctores.resources
+C:\Users\Usuario\Desktop\Personales\UNED\Programación_Avanzada_IIIC23\Proyecto_Floricela_Arguedas\Presentacion\obj\Debug\net6.0-windows\Presentacion.FormRegistroCitas.resources

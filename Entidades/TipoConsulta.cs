@@ -24,5 +24,10 @@ namespace Entidades
         
         }
         #endregion
+
+        public override string ToString()
+        {
+            return ID.ToString() + " " + Descripcion + " " + Estado;
+        }
     }
 }

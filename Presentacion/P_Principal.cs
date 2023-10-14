@@ -55,5 +55,11 @@ namespace Presentacion
         #endregion
 
 
+        private void registrarCitasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormRegistroCitas formulario_RC = new FormRegistroCitas(this.DB);
+            formulario_RC.MdiParent= this;
+            formulario_RC.Show();   
+        }
     }
 }
