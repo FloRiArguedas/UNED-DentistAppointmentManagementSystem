@@ -51,6 +51,14 @@ namespace Presentacion
             }
             catch (FormatException ex)
             {
+                MessageBox.Show("Debe colocar una Identificación", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void txtbx_IDDoctor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
                 MessageBox.Show("Solo se aceptan caracteres numéricos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -155,6 +163,7 @@ namespace Presentacion
         #endregion
 
         #endregion
+
 
     }
 }

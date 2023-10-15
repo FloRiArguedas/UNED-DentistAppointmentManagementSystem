@@ -19,6 +19,8 @@ namespace LogicaNegocios
         public Doctor[] ArrayDoctors;
         public Doctor[] ArrayDoctoresActivos;
         public TipoConsulta[] ArrayConsultasActivas;
+        public Cita[] ArrayCitas;
+        public int IDObjeto;
 
 
         public DataBase()
@@ -28,6 +30,7 @@ namespace LogicaNegocios
             ArrayDoctors = new Doctor[20];
             ArrayDoctoresActivos = new Doctor[20];
             ArrayConsultasActivas = new TipoConsulta[10];
+            ArrayCitas = new Cita[20];
         }
         #endregion
 
@@ -450,7 +453,7 @@ namespace LogicaNegocios
 
         #region Métodos para REGISTRO DE CITAS
 
-        #region Métodos para obtener Doctores y consultas activas y verficar clientes.
+        #region Métodos para obtener Doctores, consultas activas y verficar clientes.
 
         public bool CargarDoctoresActivos()
         {
@@ -510,6 +513,141 @@ namespace LogicaNegocios
         }
 
 
+
+        #endregion
+
+        #region Métodos para agregar citas
+
+        //Método para verificar que el ID de la cita sea único.
+        public bool VerificarIDCita(int IDCita)
+        {
+            for (int i = 0; i < this.ArrayCitas.Length; i++)
+            {
+                if (ArrayCitas[i] != null && IDCita == ArrayCitas[i].IDCita) //Verifico que no este nulo el índice
+                {
+                    return false; // ID no es unico
+                }
+
+            }
+            return true; //ID es único
+        }
+
+        //Método para crear una cita nueva, validando que el espacio en fecha/hora con el doctor esté libre.
+        public bool CrearyAñadirNuevaCita(int IDCita, DateTime FechaElegida, TipoConsulta ConsultaCita, Cliente Paciente, Doctor DoctorElegido)
+        {
+            Cita NuevaCita = null;
+            if (VerificarIDCita(IDCita)) //Verifico que el ID no exista.
+            {
+                for (int i = 0; i < this.ArrayCitas.Length; i++) //recorro el arreglo de citas ya existentes.
+                {
+                    if (ArrayCitas[i] != null)
+                    {
+                        if (DoctorElegido == ArrayCitas[i].DoctorCita) //Reviso si hay citas con ese doctor.
+                        {
+                            if (FechaElegida == ArrayCitas[i].FechaCita) //Reviso si la fecha/hora ya estaba ocupada.
+                            {
+                                return false; //La cita no se crea.
+                            }
+                            else { continue; } //Si la fecha/hora es distinta reviso las siguientes citas.
+                        }
+                        else { continue; } //Si la cita no es con ese doctor, reviso la siguiente cita.
+                    }
+                    else //Si el espacio es null, creo la cita.
+                    {
+                        NuevaCita = new Cita(IDCita, FechaElegida, ConsultaCita, Paciente, DoctorElegido);
+                        ArrayCitas[i] = NuevaCita; //Guardo la cita en el array
+                        break;
+                    }
+                }
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Métodos para convertir comboboxes a objetos.
+
+        //Obtener el string del combobox y extraer el ID para buscar el objeto correspondiente.
+        public int ExtraerIDCombobox(string ObjetoSeleccionado)
+        {
+            string[] ObjetoDividido = ObjetoSeleccionado.Split(' ');
+            if (ObjetoDividido.Length > 0)
+            {
+                string IDObtenido = ObjetoDividido[0];
+                IDObjeto = int.Parse(IDObtenido);
+            }
+            return IDObjeto;
+        }
+
+        //Métodos para recibir el ID y extraer el objeto correspondiente.
+        public Cliente ObtenerObjetoCliente(int IDObjeto)
+        {
+            Cliente ClienteSeleccionado = null;
+            for (int i = 0; i < ArrayClientes.Length; i++)
+            {
+                if (IDObjeto == ArrayClientes[i].Id_Cliente)
+                {
+                    ClienteSeleccionado = ArrayClientes[i];
+                    break;
+                }
+            }
+            return ClienteSeleccionado;
+        }
+        public Doctor ObtenerObjetoDoctor(int IDObjeto)
+        {
+            Doctor DoctorSeleccionado = null;
+            for (int i = 0; i < ArrayDoctors.Length; i++)
+            {
+                if (IDObjeto == ArrayDoctors[i].ID_Doctor)
+                {
+                    DoctorSeleccionado = ArrayDoctors[i];
+                    break;
+                }
+            }
+            return DoctorSeleccionado;
+
+        }
+        public TipoConsulta ObtenerObjetoTipoConsulta(int IDObjeto)
+        {
+            TipoConsulta TipoConsultaSeleccionada = null;
+            for (int i = 0; i < TiposdeConsultas.Length; i++)
+            {
+                if (IDObjeto == TiposdeConsultas[i].ID)
+                {
+                    TipoConsultaSeleccionada = TiposdeConsultas[i];
+                    break;
+                }
+            }
+            return TipoConsultaSeleccionada;
+        }
+
+        #endregion
+
+        #region Método para procesar todo lo necesario para crear la cita.
+
+        public bool ProcesarNuevaCita(int IDcita, DateTime FechahoraCita, string IDtipoConsulta, string IDPaciente, string IDDoctor)
+        {
+            //Verifico que el ID sea único
+            if (VerificarIDCita(IDcita))
+            {
+                //Llamo los métodos para extraer los objetos seleccionados.
+
+                //Cliente
+                int IDPA = ExtraerIDCombobox(IDPaciente); //Obtengo el ID del paciente seleccionado.
+                Cliente ClienteSeleccionado = ObtenerObjetoCliente(IDPA); //Extraigo el objeto paciente para pasarlo a la cita.
+                                                                          //Doctor
+                int IDDOC = ExtraerIDCombobox(IDDoctor);//Obtengo el ID del doctor seleccionado.
+                Doctor DoctorSeleccionado = ObtenerObjetoDoctor(IDDOC);//Extraigo el objeto doctor para pasarlo a la cita.
+                                                                       //Tipo Consulta
+                int IDTC = ExtraerIDCombobox(IDtipoConsulta);//Obtengo el ID del tipo consulta seleccionado.
+                TipoConsulta ConsultaSeleccionada = ObtenerObjetoTipoConsulta(IDTC);//Extraigo el objeto Tipo Consulta para pasarlo a la cita.
+
+                //LLamo al método que valida y crea la cita.
+
+                return CrearyAñadirNuevaCita(IDcita, FechahoraCita, ConsultaSeleccionada, ClienteSeleccionado, DoctorSeleccionado);
+            }
+            return false;//Si el ID no es único no se crea la cita.
+        }
 
         #endregion
 

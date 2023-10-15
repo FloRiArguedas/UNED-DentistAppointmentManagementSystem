@@ -49,9 +49,17 @@ namespace Presentacion
             }
             catch (FormatException ex)
             {
-                MessageBox.Show("Solo se aceptan caracteres numéricos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe colocar una Identificación", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+        private void txtboxID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se aceptan caracteres numéricos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void txtboxName_TextChanged(object sender, EventArgs e)
@@ -72,6 +80,7 @@ namespace Presentacion
         private void dateToAdd_ValueChanged(object sender, EventArgs e)
         {
             BirthDate = dateToAdd.Value;//Capturo la fecha seleccionada
+            BirthDate = BirthDate.Date;
         }
 
         private void cmbbxGenAdd_SelectedIndexChanged(object sender, EventArgs e)
@@ -179,5 +188,7 @@ namespace Presentacion
         }
 
         #endregion
+
+
     }
 }

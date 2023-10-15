@@ -16,11 +16,11 @@ namespace Entidades
     public class Cita
     {
         #region Propiedades
-        int IDCita;
-        DateTime FechaCita;
-        TipoConsulta ConsultaCita;
-        Cliente ClienteCita;
-        Doctor DoctorCita;
+        public int IDCita { get; set; }
+        public DateTime FechaCita { get; set; }
+        public TipoConsulta ConsultaCita { get; set; }
+        public Cliente ClienteCita { get; set; }
+        public Doctor DoctorCita { get; set; }
         #endregion
 
         #region Constructor

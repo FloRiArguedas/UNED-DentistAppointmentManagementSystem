@@ -77,6 +77,7 @@
             txtbx_IDDoctor.Size = new Size(100, 25);
             txtbx_IDDoctor.TabIndex = 2;
             txtbx_IDDoctor.TextChanged += txtbx_IDDoctor_TextChanged;
+            txtbx_IDDoctor.KeyPress += txtbx_IDDoctor_KeyPress;
             // 
             // Txtbx_NameDoctor
             // 

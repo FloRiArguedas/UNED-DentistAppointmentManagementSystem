@@ -34,7 +34,23 @@ namespace Presentacion
 
         private void txtbx_IDTC_TextChanged(object sender, EventArgs e)
         {
-            IDTiCon = int.Parse(txtbx_IDTC.Text);
+            try
+            {
+                string textoescrito = txtbx_IDTC.Text;
+                IDTiCon = int.Parse(textoescrito);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Debe colocar un ID", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void txtbx_IDTC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se aceptan caracteres numéricos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private void txtb_description_TextChanged(object sender, EventArgs e)
         {
@@ -122,6 +138,7 @@ namespace Presentacion
         #endregion
 
         #endregion
+
 
     }
 

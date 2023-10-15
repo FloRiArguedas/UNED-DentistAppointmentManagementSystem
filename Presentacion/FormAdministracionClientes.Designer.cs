@@ -212,6 +212,7 @@
             txtboxID.Size = new Size(91, 23);
             txtboxID.TabIndex = 16;
             txtboxID.TextChanged += txtboxID_TextChanged;
+            txtboxID.KeyPress += txtboxID_KeyPress;
             // 
             // txtboxName
             // 
