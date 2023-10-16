@@ -220,7 +220,7 @@
             Controls.Add(DGV_Citas);
             Controls.Add(lbl_ID);
             Name = "FormRegistroCitas";
-            Text = "FormRegistroCitas";
+            Text = "Registro de Citas";
             ((System.ComponentModel.ISupportInitialize)DGV_Citas).EndInit();
             ResumeLayout(false);
             PerformLayout();

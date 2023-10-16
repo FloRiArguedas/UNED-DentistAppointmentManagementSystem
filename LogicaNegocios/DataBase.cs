@@ -21,7 +21,7 @@ namespace LogicaNegocios
         public TipoConsulta[] ArrayConsultasActivas;
         public Cita[] ArrayCitas;
         public int IDObjeto;
-
+        
 
         public DataBase()
         {
@@ -31,6 +31,7 @@ namespace LogicaNegocios
             ArrayDoctoresActivos = new Doctor[20];
             ArrayConsultasActivas = new TipoConsulta[10];
             ArrayCitas = new Cita[20];
+ 
         }
         #endregion
 
@@ -653,8 +654,95 @@ namespace LogicaNegocios
 
         #endregion
 
+
+        #region Métodos para REPORTES
+
+        //Reportes de citas por fecha
+
+        public (Cita[], bool) EnviarReporteFecha(DateTime fechacapturada)
+        {
+            Cita[] CitasFecha = new Cita[20];
+            int j = 0;
+            bool bandera = false;
+            for (int i = 0; i < ArrayCitas.Length; i++)
+            {
+                //Manejo de excepcion para cuando el arreglo de citas tenga índices null.
+                if (ArrayCitas[i] != null)
+                {
+                    DateTime FechaArray = ArrayCitas[i].FechaCita;
+                    FechaArray = FechaArray.Date;
+                    if (fechacapturada == FechaArray)
+                    {
+                        CitasFecha[j] = ArrayCitas[i];
+                        j++;
+                        bandera = true; //Si hay citas que coinciden en fecha.
+                    }
+                }
+                else { break; } //Si no hay citas en el arreglo, me salgo del ciclo.
+            }
+            return (CitasFecha, bandera);
+
+        }
+
+        //Reportes de citas por Doctor
+
+        public (Cita[], bool) EnviarReporteDoctor(String DoctorSeleccionado)
+        {
+            Cita[] CitasDoctor = new Cita[20];
+            int j = 0;
+            bool bandera = false;
+            //Llamada a la función que revisa la selección y convierte el ID a INT
+            int IDObjeto = ExtraerIDCombobox(DoctorSeleccionado);
+            //Llamo a la función que extrae el objeto doctor.
+            Doctor DoctorElegido = ObtenerObjetoDoctor(IDObjeto);
+            //Busco que el doctor seleccionado tenga citas registradas.
+            for (int i = 0; i < ArrayCitas.Length; i++)
+            {
+                if (ArrayCitas[i] != null)
+                {
+                    if (DoctorElegido == ArrayCitas[i].DoctorCita)
+                    {
+                        CitasDoctor[j] = ArrayCitas[i];
+                        j++;
+                        bandera = true; //Si hay citas que coinciden con el doctor.
+                    }
+                }
+                else { break; } //Si no hay citas en el arreglo, me salgo del ciclo.
+            }
+            return (CitasDoctor, bandera);
+        }
+
+        //Reportes de citas por paciente
+
+        public (Cita[], bool) EnviarReporteCliente(String ClienteSeleccionado)
+        {
+            Cita[] CitasCliente = new Cita[20];
+            int j = 0;
+            bool bandera = false;
+            //Llamada a la función que revisa la selección y convierte el ID a INT
+            int IDObjeto = ExtraerIDCombobox(ClienteSeleccionado);
+            //Llamo a la función que extrae el objeto cliente.
+            Cliente ClienteElegido = ObtenerObjetoCliente(IDObjeto);
+            //Busco que el cliente seleccionado tenga citas registradas.
+            for (int i = 0; i < ArrayCitas.Length; i++)
+            {
+                if (ArrayCitas[i] != null)
+                {
+                    if (ClienteElegido == ArrayCitas[i].ClienteCita)
+                    {
+                        CitasCliente[j] = ArrayCitas[i];
+                        j++;
+                        bandera = true; //Si hay citas que coinciden con el cliente.
+                    }
+                }
+                else { break; } //Si no hay citas en el arreglo, me salgo del ciclo.
+            }
+            return (CitasCliente, bandera);
+        }
+
         #endregion
 
+        #endregion
     }
 }
 

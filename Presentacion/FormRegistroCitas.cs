@@ -160,12 +160,13 @@ namespace Presentacion
                     DGV_Citas.DataSource = this.database.ArrayCitas;
                     DGV_Citas.Refresh();
                 }
-                else {
+                else
+                {
                     MessageBox.Show("La cita no pudo ser agregada. Verifique el ID, Doctor o Fecha de la cita", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
+
             }
-            else 
+            else
             {
                 MessageBox.Show("Debe llenar todas las casillas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

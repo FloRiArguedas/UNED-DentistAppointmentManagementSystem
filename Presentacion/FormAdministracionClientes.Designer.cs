@@ -327,7 +327,7 @@
             Controls.Add(lblID);
             Controls.Add(dgv_AC);
             Name = "FormAdministracionClientes";
-            Text = "FormAdministracionClientes";
+            Text = "Administracion de Clientes";
             ((System.ComponentModel.ISupportInitialize)dgv_AC).EndInit();
             ResumeLayout(false);
             PerformLayout();

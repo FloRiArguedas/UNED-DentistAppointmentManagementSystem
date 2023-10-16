@@ -265,7 +265,7 @@
             Controls.Add(ldl_IDDoctor);
             Controls.Add(DGV_Doctores);
             Name = "FormAdministrarDoctores";
-            Text = "FormAdministrarDoctores";
+            Text = "Administración de Doctores";
             ((System.ComponentModel.ISupportInitialize)DGV_Doctores).EndInit();
             ResumeLayout(false);
             PerformLayout();

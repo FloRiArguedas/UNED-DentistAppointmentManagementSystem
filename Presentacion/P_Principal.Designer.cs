@@ -91,6 +91,7 @@
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             salirToolStripMenuItem.Size = new Size(201, 22);
             salirToolStripMenuItem.Text = "Salir";
+            salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
             // reportesToolStripMenuItem
             // 
@@ -104,18 +105,21 @@
             reportesPorFechaToolStripMenuItem.Name = "reportesPorFechaToolStripMenuItem";
             reportesPorFechaToolStripMenuItem.Size = new Size(181, 22);
             reportesPorFechaToolStripMenuItem.Text = "Reportes por Fecha";
+            reportesPorFechaToolStripMenuItem.Click += reportesPorFechaToolStripMenuItem_Click;
             // 
             // reportesPorDoctorToolStripMenuItem
             // 
             reportesPorDoctorToolStripMenuItem.Name = "reportesPorDoctorToolStripMenuItem";
             reportesPorDoctorToolStripMenuItem.Size = new Size(181, 22);
             reportesPorDoctorToolStripMenuItem.Text = "Reportes por Doctor";
+            reportesPorDoctorToolStripMenuItem.Click += reportesPorDoctorToolStripMenuItem_Click;
             // 
             // reportesPorClienteToolStripMenuItem
             // 
             reportesPorClienteToolStripMenuItem.Name = "reportesPorClienteToolStripMenuItem";
             reportesPorClienteToolStripMenuItem.Size = new Size(181, 22);
             reportesPorClienteToolStripMenuItem.Text = "Reportes por Cliente";
+            reportesPorClienteToolStripMenuItem.Click += reportesPorClienteToolStripMenuItem_Click;
             // 
             // P_Principal
             // 
@@ -126,7 +130,7 @@
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "P_Principal";
-            Text = "P_Principal";
+            Text = "Sistema para Citas de Odontología";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

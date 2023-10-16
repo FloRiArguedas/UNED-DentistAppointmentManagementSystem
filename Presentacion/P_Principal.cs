@@ -58,8 +58,34 @@ namespace Presentacion
             formulario_RC.Show();
         }
 
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void reportesPorFechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReporteFecha formulario_ReCli = new FormReporteFecha(this.DB);
+            formulario_ReCli.MdiParent = this;
+            formulario_ReCli.Show();
+        }
+
+        private void reportesPorDoctorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReporteDoctor formulario_ReDoc = new FormReporteDoctor(this.DB);
+            formulario_ReDoc.MdiParent = this;
+            formulario_ReDoc.Show();
+        }
+
+        private void reportesPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReporteporCliente formulario_ReFe = new FormReporteporCliente(this.DB);
+            formulario_ReFe.MdiParent = this;
+            formulario_ReFe.Show();
+        }
 
         #endregion
+
 
 
 
