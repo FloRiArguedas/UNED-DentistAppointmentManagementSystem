@@ -176,5 +176,11 @@ namespace Presentacion
 
         #endregion
 
+        private void bttn_consultar_Click(object sender, EventArgs e)
+        {
+            //Muestro la información en DataGridView
+            DGV_Citas.DataSource = this.database.ArrayCitas;
+            DGV_Citas.Refresh();
+        }
     }
 }

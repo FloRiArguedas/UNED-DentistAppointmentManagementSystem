@@ -125,7 +125,7 @@ namespace Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("La identificación ya se encuentra registrada", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("La identificación ya se encuentra registrada o bien ha llegado al máximo de registros permitidos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
@@ -165,5 +165,11 @@ namespace Presentacion
         #endregion
 
 
+        private void bttn_consultar_Click(object sender, EventArgs e)
+        {
+            //Muestro la información en DataGridView
+            DGV_Doctores.DataSource = this.database.ArrayDoctors;
+            DGV_Doctores.Refresh();
+        }
     }
 }

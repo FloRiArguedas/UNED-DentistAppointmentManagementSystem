@@ -43,6 +43,7 @@
             cmbbx_changeStatus = new ComboBox();
             lbl_addSection = new Label();
             lbl_SectionModify = new Label();
+            bttn_consultar = new Button();
             ((System.ComponentModel.ISupportInitialize)DGV_TC).BeginInit();
             SuspendLayout();
             // 
@@ -197,11 +198,23 @@
             lbl_SectionModify.TabIndex = 14;
             lbl_SectionModify.Text = "Llene los campos a continuación para modificar un Tipo Consulta";
             // 
+            // bttn_consultar
+            // 
+            bttn_consultar.Font = new Font("Malgun Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bttn_consultar.Location = new Point(667, 7);
+            bttn_consultar.Name = "bttn_consultar";
+            bttn_consultar.Size = new Size(75, 23);
+            bttn_consultar.TabIndex = 15;
+            bttn_consultar.Text = "Consultar";
+            bttn_consultar.UseVisualStyleBackColor = true;
+            bttn_consultar.Click += bttn_consultar_Click;
+            // 
             // FormTipoConsulta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(757, 374);
+            Controls.Add(bttn_consultar);
             Controls.Add(lbl_SectionModify);
             Controls.Add(lbl_addSection);
             Controls.Add(cmbbx_changeStatus);
@@ -241,5 +254,6 @@
         private ComboBox cmbbx_changeStatus;
         private Label lbl_addSection;
         private Label lbl_SectionModify;
+        private Button bttn_consultar;
     }
 }

@@ -106,6 +106,7 @@ namespace Presentacion
         private void dateToModify_ValueChanged(object sender, EventArgs e)
         {
             BirthDate = dateToModify.Value;//Capturo la fecha seleccionada para cambiarla.
+            BirthDate = BirthDate.Date;
         }
 
         private void cmbbxGenModify_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,7 +137,7 @@ namespace Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("La identificación ya se encuentra registrada", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("La identificación ya se encuentra registrada o ha llegado al máximo permitido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }

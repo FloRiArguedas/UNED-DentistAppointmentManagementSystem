@@ -47,6 +47,7 @@
             lblTittleModifyDoctor = new Label();
             cmbbx_StatusModifyDoctor = new ComboBox();
             Txtbx_IDModifyDoctor = new TextBox();
+            bttn_consultar = new Button();
             ((System.ComponentModel.ISupportInitialize)DGV_Doctores).BeginInit();
             SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             // txtbx_IDDoctor
             // 
             txtbx_IDDoctor.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtbx_IDDoctor.Location = new Point(116, 37);
+            txtbx_IDDoctor.Location = new Point(150, 38);
             txtbx_IDDoctor.Name = "txtbx_IDDoctor";
             txtbx_IDDoctor.Size = new Size(100, 25);
             txtbx_IDDoctor.TabIndex = 2;
@@ -82,7 +83,7 @@
             // Txtbx_NameDoctor
             // 
             Txtbx_NameDoctor.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Txtbx_NameDoctor.Location = new Point(116, 101);
+            Txtbx_NameDoctor.Location = new Point(359, 37);
             Txtbx_NameDoctor.Name = "Txtbx_NameDoctor";
             Txtbx_NameDoctor.Size = new Size(100, 25);
             Txtbx_NameDoctor.TabIndex = 3;
@@ -91,7 +92,7 @@
             // Txtbx_PriApDoctor
             // 
             Txtbx_PriApDoctor.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Txtbx_PriApDoctor.Location = new Point(417, 36);
+            Txtbx_PriApDoctor.Location = new Point(645, 36);
             Txtbx_PriApDoctor.Name = "Txtbx_PriApDoctor";
             Txtbx_PriApDoctor.Size = new Size(100, 25);
             Txtbx_PriApDoctor.TabIndex = 4;
@@ -100,7 +101,7 @@
             // Txtbx_SegApDoctor
             // 
             Txtbx_SegApDoctor.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Txtbx_SegApDoctor.Location = new Point(417, 101);
+            Txtbx_SegApDoctor.Location = new Point(150, 98);
             Txtbx_SegApDoctor.Name = "Txtbx_SegApDoctor";
             Txtbx_SegApDoctor.Size = new Size(100, 25);
             Txtbx_SegApDoctor.TabIndex = 5;
@@ -111,7 +112,7 @@
             cmbbx_StatusDoctor.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             cmbbx_StatusDoctor.FormattingEnabled = true;
             cmbbx_StatusDoctor.Items.AddRange(new object[] { "Activo", "Inactivo" });
-            cmbbx_StatusDoctor.Location = new Point(637, 35);
+            cmbbx_StatusDoctor.Location = new Point(359, 98);
             cmbbx_StatusDoctor.Name = "cmbbx_StatusDoctor";
             cmbbx_StatusDoctor.Size = new Size(121, 25);
             cmbbx_StatusDoctor.TabIndex = 6;
@@ -120,7 +121,7 @@
             // bttn_addDoc
             // 
             bttn_addDoc.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            bttn_addDoc.Location = new Point(660, 107);
+            bttn_addDoc.Location = new Point(604, 107);
             bttn_addDoc.Name = "bttn_addDoc";
             bttn_addDoc.Size = new Size(75, 23);
             bttn_addDoc.TabIndex = 7;
@@ -144,7 +145,7 @@
             // 
             lbl_NameDoctor.AutoSize = true;
             lbl_NameDoctor.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_NameDoctor.Location = new Point(29, 106);
+            lbl_NameDoctor.Location = new Point(272, 42);
             lbl_NameDoctor.Name = "lbl_NameDoctor";
             lbl_NameDoctor.Size = new Size(60, 17);
             lbl_NameDoctor.TabIndex = 9;
@@ -154,7 +155,7 @@
             // 
             lbl_PrApDoctor.AutoSize = true;
             lbl_PrApDoctor.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_PrApDoctor.Location = new Point(299, 39);
+            lbl_PrApDoctor.Location = new Point(528, 40);
             lbl_PrApDoctor.Name = "lbl_PrApDoctor";
             lbl_PrApDoctor.Size = new Size(103, 17);
             lbl_PrApDoctor.TabIndex = 10;
@@ -164,7 +165,7 @@
             // 
             lbl_SegApDoctor.AutoSize = true;
             lbl_SegApDoctor.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_SegApDoctor.Location = new Point(299, 108);
+            lbl_SegApDoctor.Location = new Point(25, 101);
             lbl_SegApDoctor.Name = "lbl_SegApDoctor";
             lbl_SegApDoctor.Size = new Size(119, 17);
             lbl_SegApDoctor.TabIndex = 11;
@@ -174,7 +175,7 @@
             // 
             lbl_Estado.AutoSize = true;
             lbl_Estado.Font = new Font("Malgun Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_Estado.Location = new Point(580, 39);
+            lbl_Estado.Location = new Point(270, 102);
             lbl_Estado.Name = "lbl_Estado";
             lbl_Estado.Size = new Size(51, 17);
             lbl_Estado.TabIndex = 12;
@@ -240,11 +241,23 @@
             Txtbx_IDModifyDoctor.TabIndex = 18;
             Txtbx_IDModifyDoctor.TextChanged += Txtbx_IDModifyDoctor_TextChanged;
             // 
+            // bttn_consultar
+            // 
+            bttn_consultar.Font = new Font("Malgun Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            bttn_consultar.Location = new Point(697, 107);
+            bttn_consultar.Name = "bttn_consultar";
+            bttn_consultar.Size = new Size(75, 23);
+            bttn_consultar.TabIndex = 19;
+            bttn_consultar.Text = "Consultar";
+            bttn_consultar.UseVisualStyleBackColor = true;
+            bttn_consultar.Click += bttn_consultar_Click;
+            // 
             // FormAdministrarDoctores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(bttn_consultar);
             Controls.Add(Txtbx_IDModifyDoctor);
             Controls.Add(cmbbx_StatusModifyDoctor);
             Controls.Add(lblTittleModifyDoctor);
@@ -292,5 +305,6 @@
         private Label lblTittleModifyDoctor;
         private ComboBox cmbbx_StatusModifyDoctor;
         private TextBox Txtbx_IDModifyDoctor;
+        private Button bttn_consultar;
     }
 }

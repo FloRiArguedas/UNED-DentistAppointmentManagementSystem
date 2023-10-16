@@ -43,6 +43,7 @@
             DateTP_FechaCita = new DateTimePicker();
             lbl_horaCita = new Label();
             cmbbx_horacita = new ComboBox();
+            bttn_consultar = new Button();
             ((System.ComponentModel.ISupportInitialize)DGV_Citas).BeginInit();
             SuspendLayout();
             // 
@@ -199,11 +200,23 @@
             cmbbx_horacita.TabIndex = 14;
             cmbbx_horacita.SelectedIndexChanged += cmbbx_horacita_SelectedIndexChanged;
             // 
+            // bttn_consultar
+            // 
+            bttn_consultar.Font = new Font("Malgun Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            bttn_consultar.Location = new Point(13, 160);
+            bttn_consultar.Name = "bttn_consultar";
+            bttn_consultar.Size = new Size(75, 23);
+            bttn_consultar.TabIndex = 15;
+            bttn_consultar.Text = "Consultar";
+            bttn_consultar.UseVisualStyleBackColor = true;
+            bttn_consultar.Click += bttn_consultar_Click;
+            // 
             // FormRegistroCitas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(715, 450);
+            Controls.Add(bttn_consultar);
             Controls.Add(cmbbx_horacita);
             Controls.Add(lbl_horaCita);
             Controls.Add(DateTP_FechaCita);
@@ -243,5 +256,6 @@
         private DateTimePicker DateTP_FechaCita;
         private Label lbl_horaCita;
         private ComboBox cmbbx_horacita;
+        private Button bttn_consultar;
     }
 }
